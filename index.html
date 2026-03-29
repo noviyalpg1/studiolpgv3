@@ -70,7 +70,8 @@
                 </a>
                 <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
                     <a href="#" onclick="navigate('home')" class="nav-link text-white/80 hover:text-white text-sm">Beranda</a>
-                    <a href="#" onclick="navigate('home', 'services')" class="nav-link text-white/80 hover:text-white text-sm">Kategori</a>
+                    <a href="#about" onclick="navigate('home'); setTimeout(()=>document.getElementById('about').scrollIntoView(), 100);" class="nav-link text-white/80 hover:text-white transition-colors text-sm">Tentang</a>
+					<a href="#" onclick="navigate('home', 'services')" class="nav-link text-white/80 hover:text-white text-sm">Kategori</a>
                     <a href="#" onclick="navigate('home', 'testimoni')" class="nav-link text-white/80 hover:text-white text-sm">Testimoni</a>
                     <a href="#" onclick="navigate('kontributor')" class="nav-link text-white/80 hover:text-white text-sm">Kontributor</a>
                     <a href="#" onclick="openAdminLogin()" class="text-neutral-500 hover:text-amber-500 text-sm transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></a>
@@ -111,12 +112,13 @@
                     <div class="animate-fadeIn"><span class="inline-block px-4 py-2 bg-amber-500/20 text-amber-400 rounded-full text-xs font-medium mb-6"> ✨ Studio Media & Bahan Ajar Gratis </span></div>
                     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 animate-fadeInUp leading-tight">
                         <span class="text-white">Akses</span> 
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500"> media pembelajaran</span><br>
-                        <span style="color: #FFFFFF" class="text-2xl md:text-4xl font-normal mt-4 block">untuk mendukung proses belajar mengajar</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500"> media pembelajaran</span>
+						<span class="text-white">Digitalmu</span><br>
+                        <span style="color: #FFFFFF" class="text-2xl md:text-4xl font-normal mt-4 block">untuk mendukung proses belajar mengajarmu di kelas</span>
                     </h1>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp stagger-3 mt-10">
                         <button onclick="navigate('home', 'services')" class="bg-amber-500 hover:bg-amber-600 text-neutral-900 font-bold px-8 py-4 rounded-full text-base transition-all">Lihat Layanan</button>
-                        <button onclick="navigate('kontributor')" class="border-2 border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-full text-base transition-all hover:bg-white/10">Leaderboard</button>
+                        <button onclick="navigate('kontributor')" class="bg-amber-500 hover:bg-amber-600 text-neutral-900 font-bold px-8 py-4 rounded-full text-base transition-all">Leaderboard</button>
                     </div>
                     
                     <!-- Stats -->
@@ -141,13 +143,36 @@
                 </div>
             </section>
 
-            <!-- Kategori / Services Section -->
+            <!-- About Section Shortcut -->
+        <section id="about" class="py-24 bg-neutral-800 border-t border-neutral-800">
+             <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                 <div>
+                    <span class="text-amber-500 font-bold tracking-wider text-sm uppercase mb-2 block">Tentang Kami</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Berkolaborasi Membangun Pendidikan</h2>
+                    <p class="text-white/70 text-lg mb-6 leading-relaxed">Studiolpg mewadahi para pendidik kreatif untuk membagikan karya media dan bahan ajar secara gratis. Setiap kontribusi Anda memberikan poin yang akan menempatkan Anda di Podium Leaderboard kami!</p>
+                    <button onclick="navigate('kontributor')" class="bg-amber-500/10 text-amber-500 border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-900 font-bold px-6 py-3 rounded-xl transition-colors">Lihat  Leaderboard  Kontributor</button>
+                 </div>
+                 <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border border-neutral-800/50">
+    <iframe 
+        class="absolute top-0 left-0 w-full h-full" 
+        src="https://www.youtube.com/embed/b6W75iPKU6A?playsinline=1&modestbranding=1&rel=0" 
+        title="Video Pembelajaran" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+             </div>
+        </section>
+		
+		
+		<!-- Kategori / Services Section -->
             <section id="services" class="py-24 bg-neutral-900 border-t border-neutral-800">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6">
                     <div class="text-center mb-16">
                         <span class="inline-block px-4 py-2 bg-amber-500/20 text-amber-400 rounded-full text-sm font-medium mb-4">Layanan Kami</span>
                         <h2 class="text-4xl font-bold text-white mb-4">Kategori Media & Bahan Ajar</h2>
-                        <p class="text-white/70 max-w-2xl mx-auto">Pilih kategori jenjang pendidikan untuk melihat berbagai Media & Bahan Ajar</p>
+                        <p class="text-white/70 max-w-3xl mx-auto">Pilih kategori jenjang pendidikan untuk melihat berbagai Media & Bahan Ajar yang kamu butuhkan</p>
                     </div>
                     
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -193,8 +218,8 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Testimoni Section -->
+	
+		<!-- Testimoni Section -->
             <section id="testimoni" class="py-24 bg-neutral-800">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6">
                     <div class="text-center mb-16">
@@ -208,7 +233,8 @@
 
                     <div class="text-center">
                         <button onclick="openModal('modal-add-testimoni')" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 text-neutral-900 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/30">
-                            Tambah Testimoni
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+           </svg>Tambah Testimoni
                         </button>
                     </div>
                 </div>
@@ -260,7 +286,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-bold text-white mb-4">Leaderboard Kontributor</h2>
-                    <p class="text-white/70">Peringkat berdasarkan jumlah poin dari rating konten (⭐5 = 10 Poin, ⭐4 = 8 Poin, dst)</p>
+                    <p class="text-white/70 max-w-3xl mx-auto mb-8 animate-fadeInUp stagger-1">Inilah para kontributor terbaik minggu ini! Peringkat ditentukan dari poin yang dikumpulkan lewat konten keren dan konsistensi. Terus upload dan jadilah kontributor yang berikutnya berada di podium.</p>
                 </div>
 
                 <!-- Podium Top 3 -->
@@ -469,22 +495,30 @@
             <p class="text-white/80 text-sm">Lampung, Indonesia</p>
            </div>
           </div>
-         </div><!-- CTA Button -->
-         <div class="mt-6"><a href="https://s.id/kontribusi-noviyalpg-studio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-neutral-900 font-bold px-5 py-3 rounded-xl text-sm transition-all shadow-lg shadow-amber-500/20">
-           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-           </svg> Kontribusi Sekarang </a>
+         </div>
+		</div>
+		
+		<!-- CTA Button -->
+                 <div>
+				 <h4 class="text-white font-bold mb-4">Jadilah Kontributor</h4>
+		 <ul class="space-y-4">
+		  <div class="mt-6"><a href="https://datapercobaan.my.canva.site/fitur-ajukan-konten" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-neutral-900 font-bold px-5 py-3 rounded-xl text-sm transition-all shadow-lg shadow-amber-500/20">Pusat Bantuan </a>
+		   
+		 <ul class="space-y-3">
+		  <div class="mt-6"><a href="https://s.id/kontribusi-noviyalpg-studio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-neutral-900 font-bold px-5 py-3 rounded-xl text-sm transition-all shadow-lg shadow-amber-500/20">Kontribusi Sekarang </a>
          </div>
         </div>
        </div>
-      </div>
-	  
+       </div>
+	          </div>
+	   
 	  <!-- Bottom Footer -->
       <div class="border-t border-neutral-800">
        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
          <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
           <p class="text-white/40 text-sm">© 2025 Studiolpg. All rights reserved.</p><span class="hidden sm:inline text-white/20">|</span>
-          <p class="text-white/40 text-xs">Made with ❤️ in Indonesia</p>
+          <p class="text-white/40 text-xs">Made in Lampung, Indonesia ❤️</p>
          </div>
          <div class="flex items-center gap-4"><a href="https://datapercobaan.my.canva.site/kebijakan-privasi-aplikasi-noviyalpg-studio" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-white/70 text-xs transition-colors">Kebijakan Privasi</a> <span class="text-white/20">|</span> <a href="https://datapercobaan.my.canva.site/syarat-dan-ketentuan-noviyalpg-studio" target="_blank" rel="noopener noreferrer" class="text-white/40 hover:text-white/70 text-xs transition-colors">Syarat &amp; Ketentuan</a>
          </div>
@@ -637,13 +671,13 @@
 
         // PHASE MAPPING DYNAMICS
         const phaseMap = {
-            "Fondasi": { subjects: ["Tematik", "Bermain Bebas"], classes: ["PAUD", "TK A", "TK B"] },
-            "A": { subjects: ["Matematika", "B. Indonesia", "Pancasila"], classes: ["1", "2"] },
-            "B": { subjects: ["IPAS", "Matematika", "B. Indonesia"], classes: ["3", "4"] },
-            "C": { subjects: ["IPAS", "Matematika", "B. Indonesia"], classes: ["5", "6"] },
-            "D": { subjects: ["IPA", "IPS", "Matematika", "B. Indonesia"], classes: ["7", "8", "9"] },
-            "E": { subjects: ["Biologi", "Fisika", "Kimia", "Geografi"], classes: ["10"] },
-            "F": { subjects: ["Biologi Lanjut", "Fisika Lanjut", "Matematika Tingkat Lanjut"], classes: ["11", "12"] }
+            "Fondasi": { subjects: ["Literasi Dasar", "Numerasi Dasar", "Nilai Agama & Budi Pekerti", "Jati Diri", "Dasar-dasar Sains, Teknologi, Rekayasa, & Seni", "Lainnya" ], classes: ["PAUD", "TK A", "TK B"] },
+            "A": { subjects: ["Pendidikan Agama & Budi Pekerti", "Pendidikan Pancasila", "Matematika", "B. Indonesia", "Seni & Budaya", "IPAS", "PJOK", "B. Inggris", "B. Lampung", "Lainnya"], classes: ["1", "2"] },
+            "B": { subjects: ["Pendidikan Agama & Budi Pekerti", "Pendidikan Pancasila", "Matematika", "B. Indonesia", "Seni & Budaya", "IPAS", "PJOK", "B. Inggris", "B. Lampung", "Lainnya"], classes: ["3", "4"] },
+            "C": { subjects: ["Pendidikan Agama & Budi Pekerti", "Pendidikan Pancasila", "Matematika", "B. Indonesia", "Seni & Budaya", "IPAS", "PJOK", "B. Inggris", "B. Lampung", "Lainnya"], classes: ["5", "6"] },
+            "D": { subjects: ["Pendidikan Agama & Budi Pekerti", "Pendidikan Pancasila", "Matematika", "B. Indonesia", "Seni & Budaya", "IPAS", "PJOK", "B. Inggris", "B. Lampung", "Informatika", "PAK", "Lainnya"], classes: ["7", "8", "9"] },
+            "E": { subjects: ["Pendidikan Agama & Budi Pekerti", "Pendidikan Pancasila", "Matematika", "B. Indonesia", "Seni & Budaya", "IPAS", "PJOK", "B. Inggris", "B. Lampung","Biologi", "Fisika", "Kimia", "Sejarah", "Sosiologi", "Ekonomi", "Geografi", "Projek Kreatif dan Kewirausahaan", "Informatika", "PAK", "Dasar-dasar Keahlian", "Lainnya"], classes: ["10"] },
+            "F": { subjects: ["Pendidikan Agama & Budi Pekerti", "Pendidikan Pancasila", "Matematika", "B. Indonesia", "Seni & Budaya", "IPAS", "PJOK", "B. Inggris", "B. Lampung","Biologi", "Fisika", "Kimia", "Sejarah", "Sosiologi", "Antropologi", "Ekonomi", "Geografi", "Projek Kreatif dan Kewirausahaan", "Informatika", "PAK", "Dasar-dasar Keahlian", "Konsentrasi Keahlian", "Lainnya"], classes: ["11", "12"] }
         };
 
         // ================= UTILS & INIT =================
