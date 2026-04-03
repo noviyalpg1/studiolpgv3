@@ -673,7 +673,9 @@
     <script>
         // CONFIG
         const GAS_URL = "https://script.google.com/macros/s/AKfycbyaZhRMHiy52m9ADp78JuXD6-xb6w_QKCQJyhM8A-g1wfCCoi67P0NFuR7M0KYRs7XoIg/exec";
-        const ADMIN_PWD = " k0nslet ";
+        // Menggunakan SHA-256 Hash agar password tidak bisa dibaca langsung
+        // Hash di bawah ini adalah hasil enkripsi dari kata sandi: "k0nslet"
+        const ADMIN_HASH = "cf896c3a1c6a2dbcc751dd30b5030cb04f938d81056ef9a7edb7f94119d6dae8";
 
         // MOCK DATA (Initial State while loading from backend, or fallback)
         let state = {
@@ -871,23 +873,42 @@
                 const authorName = author ? author.name : 'Unknown';
                 const thumb = c.thumbnail ? c.thumbnail : `https://placehold.co/600x400/3b3b3b/ffffff?text=${encodeURIComponent(c.title)}`;
                 
+                // Tambahan: Avatar dari Imgur & Logika Tombol Love
+                const contributorInitial = authorName.charAt(0).toUpperCase();
+                const authorImg = author && author.profileLink ? author.profileLink : null;
+                let authorAvatar = '';
+                
+                if (authorImg) {
+                    authorAvatar = `<img src="${authorImg}" alt="${authorName}" class="w-6 h-6 rounded-full object-cover border border-neutral-600 shadow-sm">`;
+                } else {
+                    authorAvatar = `<span class="w-6 h-6 bg-neutral-700 rounded-full flex items-center justify-center text-xs text-white border border-neutral-600 shadow-sm">${contributorInitial}</span>`;
+                }
+
+                // Cek status Love dari localStorage (Mencegah klik berkali-kali)
+                const lovedItems = JSON.parse(localStorage.getItem('lovedContents') || '[]');
+                const hasLoved = lovedItems.includes(c.id);
+                const loveBtnClass = hasLoved 
+                    ? "text-sm px-3 py-1.5 bg-pink-500/20 text-pink-400 rounded-lg flex items-center gap-1 cursor-default opacity-80" 
+                    : "text-sm px-3 py-1.5 bg-neutral-700 hover:bg-pink-500/20 hover:text-pink-400 rounded-lg transition-colors flex items-center gap-1 cursor-pointer";
+                const loveBtnAction = hasLoved ? "" : `onclick="addLove('${c.id}')"`;
+                
                 grid.innerHTML += `
                     <div class="bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-700 hover:border-amber-500/50 transition-all group flex flex-col">
-                        <div class="h-48 overflow-hidden relative">
+                        <a href="${c.link}" target="_blank" rel="noopener noreferrer" class="h-48 overflow-hidden relative block cursor-pointer">
                             <img src="${thumb}" alt="${c.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                             <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-md text-xs text-white border border-white/10">${c.type}</div>
-                        </div>
+                        </a>
                         <div class="p-5 flex-1 flex flex-col">
                             <div class="flex justify-between items-start mb-2">
                                 <h3 class="text-lg font-bold text-white line-clamp-2">${c.title}</h3>
                             </div>
                             <div class="text-sm text-neutral-400 mb-4 flex items-center gap-2">
-                                <span class="w-6 h-6 bg-neutral-700 rounded-full flex items-center justify-center text-xs">👤</span>
+                                ${authorAvatar}
                                 ${authorName}
                             </div>
                             <div class="mt-auto flex justify-between items-center pt-4 border-t border-neutral-700/50">
                                 <div class="flex gap-2">
-                                    <button onclick="addLove('${c.id}')" class="text-sm px-3 py-1.5 bg-neutral-700 hover:bg-pink-500/20 hover:text-pink-400 rounded-lg transition-colors flex items-center gap-1">
+                                    <button ${loveBtnAction} class="${loveBtnClass}">
                                         ❤️ ${c.loves}
                                     </button>
                                     <button onclick="openReportModal('${c.id}')" class="text-sm px-3 py-1.5 bg-neutral-700 hover:bg-red-500/20 hover:text-red-400 rounded-lg transition-colors">
@@ -919,12 +940,18 @@
         }
 
         function addLove(contentId) {
+            let lovedItems = JSON.parse(localStorage.getItem('lovedContents') || '[]');
+            if (lovedItems.includes(contentId)) return; // Mencegah proses jika sudah pernah klik "Love"
+
             const content = state.contents.find(c => c.id === contentId);
             if(content) {
                 content.loves += 1;
+                lovedItems.push(contentId);
+                localStorage.setItem('lovedContents', JSON.stringify(lovedItems)); // Simpan ke browser
+
                 // Simulasikan panggil backend
                 syncDataToGAS('addLove', { contentId: contentId });
-                renderKategori();
+                renderKategori(); // Refresh tampilan tombol Love
             }
         }
 
@@ -976,12 +1003,18 @@
             // Render Sisa
             const rest = sorted.slice(3);
             rest.forEach((c, idx) => {
+                const img = c.profileLink || `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=random`;
                 list.innerHTML += `
                     <tr class="hover:bg-neutral-700/30 transition-colors">
                         <td class="px-6 py-4 font-bold text-neutral-500">#${idx + 4}</td>
                         <td class="px-6 py-4">
-                            <div class="font-semibold text-white">${c.name}</div>
-                            <div class="text-xs text-neutral-400">${c.jabatan}</div>
+                            <div class="flex items-center gap-3">
+                                <img src="${img}" alt="${c.name}" class="w-10 h-10 rounded-full object-cover border border-neutral-600 shadow-sm bg-neutral-800">
+                                <div>
+                                    <div class="font-semibold text-white">${c.name}</div>
+                                    <div class="text-xs text-neutral-400">${c.jabatan}</div>
+                                </div>
+                            </div>
                         </td>
                         <td class="px-6 py-4 text-neutral-400">${c.instansi}, ${c.provinsi}</td>
                         <td class="px-6 py-4 text-right font-bold text-amber-500">${c.points} Poin</td>
@@ -1082,9 +1115,19 @@
             openModal('modal-admin-login');
         }
 
-        function checkAdminPassword() {
-            const pwd = document.getElementById('admin-pwd').value;
-            if(pwd === ADMIN_PWD) {
+        async function checkAdminPassword() {
+            const pwd = document.getElementById('admin-pwd').value.trim();
+            
+            // Proses Hashing (Enkripsi satu arah) input pengguna
+            const encoder = new TextEncoder();
+            const data = encoder.encode(pwd);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            // Cocokkan hasil hash input dengan hash rahasia
+            if(hashHex === ADMIN_HASH) {
+                document.getElementById('admin-pwd').value = ''; // Bersihkan form
                 closeModal('modal-admin-login');
                 navigate('admin');
             } else {
