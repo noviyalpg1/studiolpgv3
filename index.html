@@ -673,9 +673,7 @@
     <script>
         // CONFIG
         const GAS_URL = "https://script.google.com/macros/s/AKfycbyaZhRMHiy52m9ADp78JuXD6-xb6w_QKCQJyhM8A-g1wfCCoi67P0NFuR7M0KYRs7XoIg/exec";
-        // Menggunakan SHA-256 Hash agar password tidak bisa dibaca langsung
-        // Hash di bawah ini adalah hasil enkripsi dari kata sandi: "k0nslet"
-        const ADMIN_HASH = "cf896c3a1c6a2dbcc751dd30b5030cb04f938d81056ef9a7edb7f94119d6dae8";
+        const ADMIN_PWD = " k0nslet ";
 
         // MOCK DATA (Initial State while loading from backend, or fallback)
         let state = {
@@ -1115,19 +1113,9 @@
             openModal('modal-admin-login');
         }
 
-        async function checkAdminPassword() {
-            const pwd = document.getElementById('admin-pwd').value.trim();
-            
-            // Proses Hashing (Enkripsi satu arah) input pengguna
-            const encoder = new TextEncoder();
-            const data = encoder.encode(pwd);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-            // Cocokkan hasil hash input dengan hash rahasia
-            if(hashHex === ADMIN_HASH) {
-                document.getElementById('admin-pwd').value = ''; // Bersihkan form
+        function checkAdminPassword() {
+            const pwd = document.getElementById('admin-pwd').value;
+            if(pwd === ADMIN_PWD) {
                 closeModal('modal-admin-login');
                 navigate('admin');
             } else {
