@@ -74,7 +74,16 @@
 					<a href="#" onclick="navigate('home', 'services')" class="nav-link text-white/80 hover:text-white text-sm">Kategori</a>
                     <a href="#" onclick="navigate('home', 'testimoni')" class="nav-link text-white/80 hover:text-white text-sm">Testimoni</a>
                     <a href="#" onclick="navigate('kontributor')" class="nav-link text-white/80 hover:text-white text-sm">Kontributor</a>
-                    <a href="#" onclick="openAdminLogin()" class="text-neutral-500 hover:text-amber-500 text-sm transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></a>
+                    
+                    <div class="flex items-center space-x-4 border-l border-neutral-700 pl-6">
+                        <!-- Full Screen Button (Desktop) -->
+                        <button onclick="toggleFullScreen()" class="text-neutral-500 hover:text-amber-500 transition-colors" title="Layar Penuh">
+                            <svg id="fs-icon-desktop" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                        </button>
+                        <!-- Admin Button -->
+                        <a href="#" onclick="openAdminLogin()" class="text-neutral-500 hover:text-amber-500 transition-colors" title="Admin Area"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></a>
+                    </div>
+
                     <a href="https://s.id/donate-lpg" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-neutral-900 font-semibold px-5 py-2.5 rounded-full text-sm transition-colors">Donate</a>
                 </div>
                 <button class="md:hidden text-white p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -86,7 +95,19 @@
                 <a href="#" onclick="navigate('home');" class="text-white/80 hover:text-white py-2">Beranda</a>
                 <a href="#" onclick="navigate('home', 'services');" class="text-white/80 hover:text-white py-2">Kategori</a>
                 <a href="#" onclick="navigate('kontributor');" class="text-white/80 hover:text-white py-2">Kontributor</a>
-                <a href="#" onclick="openAdminLogin();" class="text-white/80 hover:text-white py-2">Admin Panel</a>
+                
+                <div class="border-t border-neutral-800 my-2 pt-2 flex flex-col space-y-3">
+                    <!-- Full Screen Button (Mobile) -->
+                    <button onclick="toggleFullScreen(); closeMobileMenu();" class="text-left w-full text-white/80 hover:text-amber-500 flex items-center gap-2 py-2">
+                        <svg id="fs-icon-mobile" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                        <span>Layar Penuh</span>
+                    </button>
+                    <!-- Admin Button (Mobile) -->
+                    <a href="#" onclick="openAdminLogin();" class="text-white/80 hover:text-white py-2 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>Admin Panel</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -145,23 +166,23 @@
 
             <!-- About Section Shortcut -->
         <section id="about" class="py-24 bg-neutral-800 border-t border-neutral-800">
-             <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-                 <div>
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                 <div class="lg:col-span-5">
                     <span class="text-amber-500 font-bold tracking-wider text-sm uppercase mb-2 block">Tentang Kami</span>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">Berkolaborasi Membangun Pendidikan</h2>
                     <p class="text-white/70 text-lg mb-6 leading-relaxed">Studiolpg mewadahi para pendidik kreatif untuk membagikan karya media dan bahan ajar secara gratis. Setiap kontribusi Anda memberikan poin yang akan menempatkan Anda di Podium Leaderboard kami!</p>
                     <button onclick="navigate('kontributor')" class="bg-amber-500/10 text-amber-500 border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-900 font-bold px-6 py-3 rounded-xl transition-colors">Lihat  Leaderboard  Kontributor</button>
                  </div>
-                 <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl border border-neutral-800/50">
-    <iframe 
-        class="absolute top-0 left-0 w-full h-full" 
-        src="https://www.youtube.com/embed/b6W75iPKU6A?playsinline=1&modestbranding=1&rel=0" 
-        title="Video Pembelajaran" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
-</div>
+                 <div class="lg:col-span-7 relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-neutral-700">
+                    <iframe 
+                        class="absolute top-0 left-0 w-full h-full" 
+                        src="https://www.youtube.com/embed/b6W75iPKU6A?playsinline=1&modestbranding=1&rel=0" 
+                        title="Video Pembelajaran" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
              </div>
         </section>
 		
@@ -231,10 +252,12 @@
                         <!-- Injected via JS -->
                     </div>
 
+                    <!-- Wadah untuk Paginasi Testimoni -->
+                    <div id="testimoni-pagination" class="mb-10"></div>
+
                     <div class="text-center">
                         <button onclick="openModal('modal-add-testimoni')" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 text-neutral-900 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/30">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-           </svg>Tambah Testimoni
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>Tambah Testimoni
                         </button>
                     </div>
                 </div>
@@ -245,11 +268,20 @@
         <div id="view-kategori" class="page-view py-10 min-h-screen">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
                 <!-- Header & Toolbar -->
-                <div class="flex flex-col md:flex-row justify-between items-center bg-neutral-800 p-6 rounded-2xl mb-8 shadow-lg border border-neutral-700">
-                    <div>
+                <div class="flex flex-col md:flex-row justify-between items-center bg-neutral-800 p-6 rounded-2xl mb-8 shadow-lg border border-neutral-700 gap-4">
+                    <div class="whitespace-nowrap">
                         <button onclick="navigate('home', 'services')" class="text-amber-500 hover:text-amber-400 text-sm mb-2 flex items-center gap-1">← Kembali</button>
                         <h2 id="cat-page-title" class="text-3xl font-bold text-white">Kategori: -</h2>
                     </div>
+                    
+                    <!-- Fitur Pencarian Baru -->
+                    <div class="flex-grow max-w-md w-full relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <svg class="w-5 h-5 text-neutral-400 group-focus-within:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <input type="text" id="cat-search-input" onkeyup="state.catCurrentPage = 1; renderKategori()" placeholder="Cari judul materi atau mata pelajaran..." class="w-full bg-neutral-900 border border-neutral-700 text-white rounded-xl py-2.5 pl-12 pr-4 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all">
+                    </div>
+
                     <div class="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
                         <div class="flex items-center gap-2 bg-neutral-900 px-3 py-2 rounded-lg border border-neutral-700">
                             <label class="text-sm text-neutral-400">Tampilkan:</label>
@@ -659,14 +691,22 @@
             ],
             testimonials: [
                 { id: "t1", name: "Rina", role: "Guru SD", message: "Studiolpg sangat membantu saya mendapatkan inspirasi mengajar!" },
-                { id: "t2", name: "Doni", role: "Siswa SMA", message: "Gamenya seru banget buat belajar biologi." }
+                { id: "t2", name: "Doni", role: "Siswa SMA", message: "Gamenya seru banget buat belajar biologi." },
+                { id: "t3", name: "Siti", role: "Guru PAUD", message: "Materi sangat interaktif dan disukai anak-anak." },
+                { id: "t4", name: "Budi", role: "Orang Tua", message: "Anak saya jadi lebih rajin belajar berkat platform ini." },
+                { id: "t5", name: "Agus", role: "Guru SMP", message: "Sangat mudah digunakan dan materi up-to-date." },
+                { id: "t6", name: "Lina", role: "Siswa SMP", message: "Penjelasannya mudah dipahami, terima kasih!" },
+                { id: "t7", name: "Dewi", role: "Guru SMK", message: "Platform yang wajib dimiliki oleh semua pendidik di era digital." },
+                { id: "t8", name: "Hendra", role: "Kepala Sekolah", message: "Meningkatkan kualitas mengajar guru-guru kami." }
             ],
             reports: [],
             
             // Pagination state
             catCurrentPage: 1,
             catItemsPerPage: 6,
-            catCurrentLevel: "SD"
+            catCurrentLevel: "SD",
+            testiCurrentPage: 1,
+            testiItemsPerPage: 6
         };
 
         // PHASE MAPPING DYNAMICS
@@ -725,6 +765,11 @@
                 state.catCurrentLevel = subParam;
                 state.catCurrentPage = 1;
                 document.getElementById('cat-page-title').innerText = `Kategori: ${subParam}`;
+                
+                // Reset search bar saat berpindah kategori
+                const searchInput = document.getElementById('cat-search-input');
+                if (searchInput) searchInput.value = '';
+                
                 renderKategori();
             }
             if(pageId === 'kontributor') {
@@ -769,6 +814,20 @@
             }
         }
 
+        // Listener untuk mengubah ikon Full Screen
+        document.addEventListener('fullscreenchange', () => {
+            const isFS = document.fullscreenElement;
+            const iconPath = isFS 
+                ? "M4 14h4v4m0-4l-5 5M16 14h4v4m0-4l5 5M4 10h4V6m0 4l-5-5M16 10h4V6m0 4l5-5" // Minimize
+                : "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"; // Maximize
+                
+            const desktopIcon = document.getElementById('fs-icon-desktop');
+            if(desktopIcon) desktopIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${iconPath}"></path>`;
+            
+            const mobileIcon = document.getElementById('fs-icon-mobile');
+            if(mobileIcon) mobileIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${iconPath}"></path>`;
+        });
+
         // ================= MODALS =================
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
@@ -776,9 +835,21 @@
         // ================= KATEGORI PAGE =================
         function renderKategori() {
             const grid = document.getElementById('cat-content-grid');
+            const searchInput = document.getElementById('cat-search-input');
+            const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
             
-            // Filter by level, sort by Loves (Popular first)
+            // Filter by level
             let filtered = state.contents.filter(c => c.level === state.catCurrentLevel);
+            
+            // Filter by search query (judul atau mata pelajaran)
+            if (searchQuery) {
+                filtered = filtered.filter(c => 
+                    (c.title && c.title.toLowerCase().includes(searchQuery)) || 
+                    (c.subject && c.subject.toLowerCase().includes(searchQuery))
+                );
+            }
+
+            // Sort by Loves (Popular first)
             filtered.sort((a, b) => b.loves - a.loves);
 
             // Pagination logic
@@ -936,13 +1007,29 @@
         // ================= TESTIMONI =================
         function renderHomeTestimoni() {
             const grid = document.getElementById('home-testimoni-grid');
+            const paginationContainer = document.getElementById('testimoni-pagination');
             grid.innerHTML = '';
-            state.testimonials.forEach(t => {
+            
+            const totalItems = state.testimonials.length;
+            const totalPages = Math.ceil(totalItems / state.testiItemsPerPage) || 1;
+            
+            if (state.testiCurrentPage > totalPages) state.testiCurrentPage = totalPages;
+            
+            const startIdx = (state.testiCurrentPage - 1) * state.testiItemsPerPage;
+            const paginated = state.testimonials.slice(startIdx, startIdx + state.testiItemsPerPage);
+
+            if (paginated.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center text-neutral-500 py-12 bg-neutral-900 rounded-2xl border border-neutral-800">Belum ada ulasan. Jadilah yang pertama!</div>`;
+                if (paginationContainer) paginationContainer.innerHTML = '';
+                return;
+            }
+
+            paginated.forEach(t => {
                 grid.innerHTML += `
-                    <div class="bg-neutral-900/50 border border-neutral-700 p-6 rounded-2xl">
-                        <p class="text-white/80 italic mb-4">"${t.message}"</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-amber-500/20 rounded-full flex items-center justify-center text-amber-500 font-bold">${t.name.charAt(0)}</div>
+                    <div class="bg-neutral-900/50 border border-neutral-700 p-6 rounded-2xl flex flex-col">
+                        <p class="text-white/80 italic mb-4 line-clamp-4 flex-grow">"${t.message}"</p>
+                        <div class="flex items-center gap-3 mt-4 pt-4 border-t border-neutral-800">
+                            <div class="w-10 h-10 bg-amber-500/20 rounded-full flex items-center justify-center text-amber-500 font-bold">${t.name.charAt(0).toUpperCase()}</div>
                             <div>
                                 <h4 class="text-white font-bold text-sm">${t.name}</h4>
                                 <p class="text-white/50 text-xs">${t.role}</p>
@@ -951,6 +1038,26 @@
                     </div>
                 `;
             });
+
+            // Render Pagination
+            if (paginationContainer) {
+                if (totalItems > state.testiItemsPerPage) {
+                    paginationContainer.innerHTML = `
+                        <div class="flex justify-center items-center gap-4 mt-8">
+                            <button onclick="changeTestiPage(-1)" ${state.testiCurrentPage === 1 ? 'disabled class="opacity-50 cursor-not-allowed px-4 py-2 bg-neutral-800 text-white rounded-lg"' : 'class="px-4 py-2 bg-neutral-700 hover:bg-neutral-600 text-white rounded-lg transition-colors"'}>Sebelumnya</button>
+                            <span class="text-sm text-neutral-400">Halaman ${state.testiCurrentPage} dari ${totalPages}</span>
+                            <button onclick="changeTestiPage(1)" ${state.testiCurrentPage === totalPages ? 'disabled class="opacity-50 cursor-not-allowed px-4 py-2 bg-neutral-800 text-white rounded-lg"' : 'class="px-4 py-2 bg-neutral-700 hover:bg-neutral-600 text-white rounded-lg transition-colors"'}>Selanjutnya</button>
+                        </div>
+                    `;
+                } else {
+                    paginationContainer.innerHTML = '';
+                }
+            }
+        }
+
+        function changeTestiPage(dir) {
+            state.testiCurrentPage += dir;
+            renderHomeTestimoni();
         }
 
         function submitPublicTestimoni() {
