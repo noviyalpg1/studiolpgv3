@@ -171,7 +171,10 @@
                     <span class="text-amber-500 font-bold tracking-wider text-sm uppercase mb-2 block">Tentang Kami</span>
                     <h2 class="text-4xl md:text-5xl font-bold mb-6">Berkolaborasi Membangun Pendidikan</h2>
                     <p class="text-white/70 text-lg mb-6 leading-relaxed">Studiolpg mewadahi para pendidik kreatif untuk membagikan karya media dan bahan ajar secara gratis. Setiap kontribusi Anda memberikan poin yang akan menempatkan Anda di Podium Leaderboard kami!</p>
-                    <button onclick="navigate('kontributor')" class="bg-amber-500/10 text-amber-500 border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-900 font-bold px-6 py-3 rounded-xl transition-colors">Lihat  Leaderboard  Kontributor</button>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="navigate('kontributor')" class="bg-amber-500/10 text-amber-500 border border-amber-500/50 hover:bg-amber-500 hover:text-neutral-900 font-bold px-6 py-3 rounded-xl transition-colors">Lihat Leaderboard Kontributor</button>
+                        <a href="https://s.id/kontribusi-noviyalpg-studio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-neutral-900 font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-amber-500/20">Kontribusi Sekarang</a>
+                    </div>
                  </div>
                  <div class="lg:col-span-7 relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-neutral-700">
                     <iframe 
@@ -376,6 +379,15 @@
                             <h3 class="text-xl font-bold text-white">Daftar Konten</h3>
                             <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
                                 <input type="text" id="admin-search-konten" onkeyup="renderAdminKonten()" placeholder="Cari judul..." class="flex-grow sm:w-48 bg-neutral-900 border border-neutral-700 text-white px-3 py-2 rounded-lg text-sm focus:outline-none focus:border-amber-500 transition-colors">
+                                
+                                <button onclick="downloadTemplate('konten')" class="bg-neutral-600 hover:bg-neutral-500 text-white px-3 py-2 rounded-lg text-sm font-bold flex items-center gap-1 transition-colors shadow-lg">
+                                    📥 Template
+                                </button>
+                                <button onclick="document.getElementById('upload-konten-csv').click()" class="bg-amber-600 hover:bg-amber-500 text-white px-3 py-2 rounded-lg text-sm font-bold flex items-center gap-1 transition-colors shadow-lg">
+                                    📤 Upload
+                                </button>
+                                <input type="file" id="upload-konten-csv" accept=".csv" class="hidden" onchange="handleFileUpload(event, 'konten')">
+
                                 <button onclick="downloadAdminData('konten')" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm font-bold flex items-center gap-1 transition-colors shadow-lg shadow-blue-500/20">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> CSV
                                 </button>
@@ -401,7 +413,15 @@
                     <div id="admin-sec-kontributor" class="admin-section hidden">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                             <h3 class="text-xl font-bold text-white">Daftar Kontributor</h3>
-                            <div class="flex items-center gap-2 w-full sm:w-auto">
+                            <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                                <button onclick="downloadTemplate('kontributor')" class="bg-neutral-600 hover:bg-neutral-500 text-white px-3 py-2 rounded-lg text-sm font-bold flex items-center gap-1 transition-colors shadow-lg">
+                                    📥 Template
+                                </button>
+                                <button onclick="document.getElementById('upload-kontributor-csv').click()" class="bg-amber-600 hover:bg-amber-500 text-white px-3 py-2 rounded-lg text-sm font-bold flex items-center gap-1 transition-colors shadow-lg">
+                                    📤 Upload
+                                </button>
+                                <input type="file" id="upload-kontributor-csv" accept=".csv" class="hidden" onchange="handleFileUpload(event, 'kontributor')">
+
                                 <button onclick="downloadAdminData('kontributor')" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm font-bold flex items-center gap-1 transition-colors shadow-lg shadow-blue-500/20">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> CSV
                                 </button>
@@ -693,7 +713,7 @@
     <!-- ==================== LOGIC & DATA ==================== -->
     <script>
         // CONFIG
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbyaZhRMHiy52m9ADp78JuXD6-xb6w_QKCQJyhM8A-g1wfCCoi67P0NFuR7M0KYRs7XoIg/exec";
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbypA0kUu4VtjYuOhdb2KFSDvNc5ptiZEtPgPtEVJpB_pLuxEXgA2-P5pXRxVWKPo5mHLQ/exec";
         const ADMIN_PWD = " k0nslet ";
 
         // MOCK DATA (Initial State while loading from backend, or fallback)
@@ -1530,6 +1550,113 @@
             }).catch(e => {
                 console.error("Gagal sinkronisasi dengan GAS (Normal jika mode dev lokal/CORS strict):", e);
             });
+        }
+
+        // ================= FITUR INPUT MASSAL (BULK UPLOAD) =================
+        function downloadTemplate(type) {
+            let headers = '';
+            let filename = '';
+            
+            if (type === 'konten') {
+                headers = 'Judul,Jenjang,Jenis,Fase,Mata_Pelajaran,Kelas,ID_Kontributor,Rating,Link_Thumbnail,Link_Konten\n';
+                filename = 'Template_Input_Massal_Konten.csv';
+            } else if (type === 'kontributor') {
+                headers = 'Nama,Instansi,Provinsi,Jabatan,Link_Profil\n';
+                filename = 'Template_Input_Massal_Kontributor.csv';
+            }
+            
+            const blob = new Blob(["\uFEFF" + headers], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = filename;
+            link.click();
+        }
+
+        function handleFileUpload(event, type) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const text = e.target.result;
+                const rows = text.split('\n').filter(row => row.trim().length > 0);
+                
+                if (rows.length <= 1) {
+                    alert("File CSV kosong atau hanya berisi baris header!");
+                    event.target.value = ''; 
+                    return;
+                }
+
+                let successCount = 0;
+                let payloadBatch = [];
+
+                for (let i = 1; i < rows.length; i++) {
+                    // Membersihkan koma dan tanda kutip sederhana
+                    let cols = rows[i].split(',').map(col => col.trim().replace(/^"|"$/g, ''));
+                    
+                    if (type === 'konten') {
+                        if (cols.length >= 10 && cols[0]) {
+                            const newId = 'k' + Date.now() + i;
+                            const payload = {
+                                id: newId,
+                                title: cols[0],
+                                level: cols[1],
+                                type: cols[2],
+                                phase: cols[3],
+                                subject: cols[4],
+                                class: cols[5],
+                                contributorId: cols[6],
+                                rating: parseInt(cols[7]) || 5,
+                                thumbnail: cols[8] || '',
+                                link: cols[9] || '',
+                                loves: 0
+                            };
+                            state.contents.push(payload);
+                            payloadBatch.push(payload);
+                            successCount++;
+                        }
+                    } else if (type === 'kontributor') {
+                        if (cols.length >= 4 && cols[0]) {
+                            const newId = 'c' + Date.now() + i;
+                            const payload = {
+                                id: newId,
+                                name: cols[0],
+                                instansi: cols[1],
+                                provinsi: cols[2],
+                                jabatan: cols[3],
+                                profileLink: cols[4] || '',
+                                points: 0
+                            };
+                            state.contributors.push(payload);
+                            payloadBatch.push(payload);
+                            successCount++;
+                        }
+                    }
+                }
+
+                alert(`Berhasil memproses dan menambahkan ${successCount} data baru!`);
+                
+                // Refresh UI
+                if (type === 'konten') renderAdminKonten();
+                if (type === 'kontributor') {
+                    renderAdminKontributor();
+                    updateAdminDropdowns(); // Update dropdown kontributor di form konten
+                }
+                updateStats();
+                
+                // Proses Sync ke GAS secara berurutan (Mencegah Rate Limit)
+                payloadBatch.forEach((payload, index) => {
+                    setTimeout(() => {
+                        syncDataToGAS(type === 'konten' ? 'saveKonten' : 'saveKontributor', payload);
+                    }, index * 300); // Jeda 300ms antar request
+                });
+
+                // Reset input file agar bisa digunakan lagi
+                event.target.value = '';
+            };
+            
+            reader.readAsText(file);
         }
 
         // Start Application
