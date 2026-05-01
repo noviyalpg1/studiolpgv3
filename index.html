@@ -142,6 +142,18 @@
                         <button onclick="navigate('kontributor')" class="bg-amber-500 hover:bg-amber-600 text-neutral-900 font-bold px-8 py-4 rounded-full text-base transition-all">Leaderboard</button>
                     </div>
                     
+                    <!-- Fitur Pencarian Global di Beranda -->
+                    <div class="mt-10 max-w-3xl mx-auto w-full animate-fadeInUp stagger-3 relative group px-4 sm:px-0">
+                        <div class="absolute inset-y-0 left-4 sm:left-0 pl-4 sm:pl-5 flex items-center pointer-events-none z-10">
+                            <svg class="w-6 h-6 text-amber-500 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <input type="text" id="home-search-input" onkeyup="if(event.key === 'Enter') handleHomeSearch()" placeholder="Cari judul konten, mata pelajaran, jenis kategori, atau nama pembuat..." class="w-full bg-neutral-900/80 backdrop-blur-xl border-2 border-neutral-700/80 text-white rounded-full py-4 pl-14 pr-24 sm:pr-32 text-sm sm:text-lg focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 transition-all shadow-2xl">
+                        <button onclick="handleHomeSearch()" class="absolute inset-y-1.5 right-5 sm:right-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-neutral-900 font-bold px-5 sm:px-8 rounded-full transition-all shadow-lg hover:shadow-amber-500/30 flex items-center gap-2">
+                            <span class="hidden sm:inline">Cari</span>
+                            <svg class="w-5 h-5 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </div>
+
                     <!-- Stats -->
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 max-w-4xl mx-auto animate-fadeInUp stagger-3 bg-neutral-800/50 p-6 rounded-3xl border border-neutral-700/50 backdrop-blur-sm">
                         <div class="text-center">
@@ -278,11 +290,11 @@
                     </div>
                     
                     <!-- Fitur Pencarian Baru -->
-                    <div class="flex-grow max-w-md w-full relative group">
+                    <div class="flex-grow max-w-xl w-full relative group">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                             <svg class="w-5 h-5 text-neutral-400 group-focus-within:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
-                        <input type="text" id="cat-search-input" onkeyup="state.catCurrentPage = 1; renderKategori()" placeholder="Cari judul materi atau mata pelajaran..." class="w-full bg-neutral-900 border border-neutral-700 text-white rounded-xl py-2.5 pl-12 pr-4 text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all">
+                        <input type="text" id="cat-search-input" onkeyup="state.catCurrentPage = 1; renderKategori()" placeholder="Cari judul konten, mata pelajaran, jenis kategori, atau nama pembuat..." class="w-full bg-neutral-900 border border-neutral-700 text-white rounded-xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30 transition-all shadow-inner">
                     </div>
 
                     <div class="flex flex-wrap items-center gap-4 mt-4 md:mt-0">
@@ -520,7 +532,7 @@
          <p class="text-white/60 text-sm leading-relaxed mb-6">Studiolpg adalah platform media &amp; bahan ajar gratis untuk mendukung pembelajaran yang kreatif dan menyenangkan.</p><!-- Social Media -->
          <div class="flex items-center gap-3"><a href="https://s.id/youtube-noviyalpg" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-800 hover:bg-red-600 flex items-center justify-center text-white/60 hover:text-white transition-all duration-300" title="YouTube">
            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-           </svg></a> <a href="https://s.id/ig-noviyalpg" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 flex items-center justify-center text-white/60 hover:text-white transition-all duration-300" title="Instagram">
+           </svg></a> <a href="https://www.instagram.com/noviya.lpg?utm_source=qr&igsh=MWRlMHBraTc0eGt1bg==" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 flex items-center justify-center text-white/60 hover:text-white transition-all duration-300" title="Instagram">
            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
            </a> <a href="https://www.tiktok.com/@noviya.lpg?_t=ZS-8tafgg6Eeyl&amp;_r=1" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-neutral-800 hover:bg-black flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 hover:ring-2 hover:ring-cyan-400" title="TikTok">
            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
@@ -794,34 +806,6 @@
             renderHomeTestimoni();
         }
 
-        function navigate(pageId, subParam = null) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            document.getElementById(`view-${pageId}`).classList.add('active');
-            window.scrollTo(0,0);
-
-            if(pageId === 'home' && subParam) {
-                setTimeout(() => document.getElementById(subParam).scrollIntoView(), 100);
-            }
-            if(pageId === 'kategori') {
-                state.catCurrentLevel = subParam;
-                state.catCurrentPage = 1;
-                document.getElementById('cat-page-title').innerText = `Kategori: ${subParam}`;
-                
-                // Reset search bar saat berpindah kategori
-                const searchInput = document.getElementById('cat-search-input');
-                if (searchInput) searchInput.value = '';
-                
-                renderKategori();
-            }
-            if(pageId === 'kontributor') {
-                renderLeaderboard();
-            }
-            if(pageId === 'admin') {
-                updateAdminDropdowns();
-                switchAdminTab('konten'); // Default tab
-            }
-        }
-
         function calculatePoints() {
             state.contributors.forEach(c => {
                 let pts = 0;
@@ -843,6 +827,15 @@
             document.getElementById('stat-highest-love').innerText = `${highestLove} ❤️`;
         }
 
+        // Logic memproses search bar di home page
+        function handleHomeSearch() {
+            const query = document.getElementById('home-search-input').value;
+            const catSearchInput = document.getElementById('cat-search-input');
+            if (catSearchInput) catSearchInput.value = query;
+            // Navigasi ke halaman pencarian global (Semua Kategori)
+            navigate('kategori');
+        }
+
         function toggleFullScreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(err => {
@@ -852,6 +845,40 @@
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
                 }
+            }
+        }
+
+        function navigate(pageId, subParam = null) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            document.getElementById(`view-${pageId}`).classList.add('active');
+            window.scrollTo(0,0);
+
+            if(pageId === 'home' && subParam) {
+                setTimeout(() => document.getElementById(subParam).scrollIntoView(), 100);
+            }
+            if(pageId === 'kategori') {
+                if (subParam) {
+                    state.catCurrentLevel = subParam;
+                    document.getElementById('cat-page-title').innerText = `Kategori: ${subParam}`;
+                    
+                    // Reset search bar hanya jika berpindah kategori secara manual
+                    const searchInput = document.getElementById('cat-search-input');
+                    if (searchInput) searchInput.value = '';
+                } else {
+                    // Jika ke kategori dari kolom pencarian Beranda (subParam null)
+                    state.catCurrentLevel = "Semua";
+                    document.getElementById('cat-page-title').innerText = `Hasil Pencarian`;
+                }
+                
+                state.catCurrentPage = 1;
+                renderKategori();
+            }
+            if(pageId === 'kontributor') {
+                renderLeaderboard();
+            }
+            if(pageId === 'admin') {
+                updateAdminDropdowns();
+                switchAdminTab('konten'); // Default tab
             }
         }
 
@@ -879,15 +906,22 @@
             const searchInput = document.getElementById('cat-search-input');
             const searchQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
             
-            // Filter by level
-            let filtered = state.contents.filter(c => c.level === state.catCurrentLevel);
+            // Filter by level (hanya filter jika bukan global search "Semua")
+            let filtered = state.contents;
+            if (state.catCurrentLevel !== "Semua") {
+                filtered = filtered.filter(c => c.level === state.catCurrentLevel);
+            }
             
-            // Filter by search query (judul atau mata pelajaran)
+            // Filter by search query (judul, mata pelajaran, jenis kategori, atau nama kontributor)
             if (searchQuery) {
-                filtered = filtered.filter(c => 
-                    (c.title && c.title.toLowerCase().includes(searchQuery)) || 
-                    (c.subject && c.subject.toLowerCase().includes(searchQuery))
-                );
+                filtered = filtered.filter(c => {
+                    const author = state.contributors.find(k => k.id === c.contributorId);
+                    const authorName = author ? author.name.toLowerCase() : '';
+                    return (c.title && c.title.toLowerCase().includes(searchQuery)) || 
+                           (c.subject && c.subject.toLowerCase().includes(searchQuery)) ||
+                           (c.type && c.type.toLowerCase().includes(searchQuery)) ||
+                           (authorName.includes(searchQuery));
+                });
             }
 
             // Sort by Loves (Popular first)
